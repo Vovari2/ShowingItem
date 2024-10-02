@@ -1,11 +1,16 @@
 
-# Параметр включить(true)/выключить(false) функции плагина
+# EN: Parameter to enable (true)/disable (false) the plugin function
+# RU: Параметр включить(true)/выключить(false) функции плагина
 enable: true
 
-# Строка, которая в чате будет заменяться на предмет (будет заменяться, только если игрок имеет разрешение showingitem.use)
+# EN: String that will be replaced with an item in the chat (will be replaced only if the player has the showingitem.use permission)
+# RU: Строка, которая в чате будет заменяться на предмет (будет заменяться, только если игрок имеет разрешение showingitem.use)
 matcher: "[item]"
 
-# Строка, на которую будет заменяться строка в параметре "matcher"
+# EN: String that will replace the string in the "matcher" parameter
+# The string must contain a placeholder <%item%>, which will be replaced with an item
+# The net.kyori.adventure library is used to designate colors and decorations. More details: https://docs.advntr.dev/minimessage/format.html
+# RU: Строка, на которую будет заменяться строка в параметре "matcher"
 # В строке должен обязательно присутсвовать плейсхолдер <%item%>, который будет заменён на предмет
 # Для обозначения цветов и декораций использует библиотека net.kyori.adventure. Подробнее: https://docs.advntr.dev/minimessage/format.html
 replacement: "<#F08A5D><</#F08A5D><%item%><#F08A5D>></#F08A5D>"

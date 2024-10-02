@@ -1,6 +1,7 @@
 The plugin allows you to display the item in your hand in a chat message.
 
 Commands:
+![image](/images/commands.png)
 
 
 Permissions:
