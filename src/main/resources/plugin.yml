@@ -1,0 +1,14 @@
+name: ShowingItem
+author: Vovari2
+version: '1.0'
+main: me.vovari2.showingitem.ShowingItem
+api-version: '1.21'
+
+commands:
+  showingitem:
+    aliases:
+      - si
+    usage: /<command>
+    permission: "showingitem.*"
+
+

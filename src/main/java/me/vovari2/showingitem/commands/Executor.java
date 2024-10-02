@@ -1,0 +1,48 @@
+package me.vovari2.showingitem.commands;
+
+import me.vovari2.showingitem.ShowingItem;
+import me.vovari2.showingitem.Text;
+import me.vovari2.showingitem.commands.commands.HelpCommand;
+import me.vovari2.showingitem.commands.commands.ReloadCommand;
+import me.vovari2.showingitem.exceptions.ComponentException;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.HashMap;
+
+public class Executor implements CommandExecutor {
+    private final HashMap<String, Class<? extends Command>> commands;
+    public Executor(){
+        commands = new HashMap<>();
+        commands.put("help", HelpCommand.class);
+        commands.put("reload", ReloadCommand.class);
+    }
+    @Override
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command commandObject, @NotNull String label, @NotNull String[] args) {
+        try{
+            if (args.length == 0){
+                sender.sendMessage(Text.getComponent("command.help"));
+                return true;
+            }
+
+            String str = args[0].toLowerCase();
+            if (!commands.containsKey(str))
+                throw new ComponentException(Text.getComponent("warning.command_incorrectly"));
+
+            if (!ShowingItem.isEnable() && !(args.length == 1 && args[0].equals("reload")))
+                throw new ComponentException(Text.getComponent("warning.command_incorrectly"));
+
+            Command command = commands.get(args[0].toLowerCase()).getDeclaredConstructor(CommandSender.class, String[].class, ShowingItem.class).newInstance(sender, args, ShowingItem.getInstance());
+            command.execute();
+        }
+        catch (ComponentException error){
+            Text.sendSenderInfoMessage(sender, error.getComponentMessage());
+        }
+        catch (Exception error){
+            error.printStackTrace();
+            sender.sendMessage(error.getMessage());
+        }
+        return true;
+    }
+}
