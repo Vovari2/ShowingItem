@@ -13,7 +13,7 @@ public class ReloadCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        if (!sender.hasPermission("showingitem.reload"))
+        if (!sender.hasPermission("showingitem.reload") && !sender.hasPermission("showingitem.*"))
             throw new ComponentException(Text.get("warning.dont_have_permission"));
 
         if (args.length > 2)

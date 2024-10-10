@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Text {
     public static final String PLUGIN_NAME = "ShowingItem";
-    public static final String VERSION = "1.0.0";
-    private static final Component MESSAGE_BEGIN = MiniMessage.miniMessage().deserialize("<#АА0000>[<#FF5555>ShowingItem<##АА0000>]<reset> ");
+    public static final String VERSION = "1.0.1";
+    private static final Component MESSAGE_BEGIN = MiniMessage.miniMessage().deserialize("<dark_aqua>[<aqua>ShowingItem<dark_aqua>]<reset> ");
 
     private static ConsoleCommandSender sender;
     private static Text object;

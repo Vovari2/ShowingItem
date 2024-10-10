@@ -14,7 +14,7 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
     }
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        if (args.length == 1 && sender.hasPermission("showingitem.commands"))
+        if (args.length == 1 && (sender.hasPermission("showingitem.help") || sender.hasPermission("showingitem.reload") || sender.hasPermission("showingitem.*")))
             return commands;
         return List.of();
     }

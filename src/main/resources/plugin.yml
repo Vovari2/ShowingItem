@@ -1,37 +1,10 @@
 name: ShowingItem
 author: Vovari2
-version: '1.0.0'
+version: '1.0.1'
 main: me.vovari2.showingitem.ShowingItem
-api-version: '1.21'
+api-version: '1.18'
 
 commands:
   showingitem:
     aliases: ["si"]
-    permission: showingitem.commands
-
-permissions:
-  showingitem.*:
-    description: "Permission to perform all actions of the ShowingItem plugin"
-    default: true
-    children:
-      display_things.help: false
-      display_things.reload: false
-      display_things.use: false
-  showingitem.commands:
-    description: "Permission to use all ShowingItem plugin commands"
-    default: false
-    children:
-      display_things.help: true
-      display_things.reload: true
-
-  showingitem.help:
-    description: "Permission to use the help command (/si help)"
-    default: false
-  showingitem.reload:
-    description: "Permission to use the reload command (/si reload)"
-    default: false
-
-  showingitem.use:
-    description: "Permission to use a replaceable string"
-    default: false
 
