@@ -22,27 +22,31 @@ public class Executor implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command commandObject, @NotNull String label, @NotNull String[] args) {
         try{
             if (args.length == 0){
-                sender.sendMessage(Text.getComponent("command.help"));
+                executeCommand("help", sender, args);
                 return true;
             }
 
             String str = args[0].toLowerCase();
             if (!commands.containsKey(str))
-                throw new ComponentException(Text.getComponent("warning.command_incorrectly"));
+                throw new ComponentException(Text.get("warning.command_incorrectly"));
 
             if (!ShowingItem.isEnable() && !(args.length == 1 && args[0].equals("reload")))
-                throw new ComponentException(Text.getComponent("warning.command_incorrectly"));
+                throw new ComponentException(Text.get("warning.command_incorrectly"));
 
-            Command command = commands.get(args[0].toLowerCase()).getDeclaredConstructor(CommandSender.class, String[].class, ShowingItem.class).newInstance(sender, args, ShowingItem.getInstance());
-            command.execute();
+            executeCommand(args[0].toLowerCase(), sender, args);
         }
         catch (ComponentException error){
-            Text.sendSenderInfoMessage(sender, error.getComponentMessage());
+            sender.sendMessage(error.getComponentMessage());
         }
         catch (Exception error){
             error.printStackTrace();
             sender.sendMessage(error.getMessage());
         }
         return true;
+    }
+
+    private void executeCommand(String subcommand, CommandSender sender, String[] args) throws Exception{
+        Command command = commands.get(subcommand).getDeclaredConstructor(CommandSender.class, String[].class, ShowingItem.class).newInstance(sender, args, ShowingItem.getInstance());
+        command.execute();
     }
 }

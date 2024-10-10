@@ -16,12 +16,12 @@ public class ConfigUtils {
         File dataFolder = ShowingItem.getInstance().getDataFolder();
 
         if (dataFolder.mkdir())
-            Text.sendInfoMessage("<green>Folder \"ShowingItem\" in \"plugins\" was created!");
+            Text.sendMessageToConsole("<green>Folder \"ShowingItem\" in \"plugins\" was created!");
 
         File file = new File(dataFolder, "config.yml");
         if (!file.exists()){
             ShowingItem.getInstance().saveResource("config.yml", false);
-            Text.sendInfoMessage("<green>File \"config.yml\" was created!");
+            Text.sendMessageToConsole("<green>File \"config.yml\" was created!");
         }
     }
     public static void loadConfiguration(){

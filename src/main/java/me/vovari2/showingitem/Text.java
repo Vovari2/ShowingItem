@@ -2,58 +2,53 @@ package me.vovari2.showingitem;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Text {
-    private static final Component startOfMessage = MiniMessage.miniMessage().deserialize("<dark_aqua>[<aqua>ShowingItem</aqua>]<reset> ");
-    private static Text object;
-    private final HashMap<String, Component> texts;
-    public Text(HashMap<String, Component> texts){
-        this.texts = texts;
-    }
+    public static final String PLUGIN_NAME = "ShowingItem";
+    public static final String VERSION = "1.0.0";
+    private static final Component MESSAGE_BEGIN = MiniMessage.miniMessage().deserialize("<#АА0000>[<#FF5555>ShowingItem<##АА0000>]<reset> ");
 
+    private static ConsoleCommandSender sender;
+    private static Text object;
+    public static void initialize(ConsoleCommandSender newSender){
+        sender = newSender;
+    }
     public static void at(Text object){
         Text.object = object;
     }
     public static void clear(){
         object = null;
     }
-
-    public static Component getComponent(String key){
+    public static Component get(String key){
         return object.texts.get(key);
     }
 
-
-
-
-    public static void sendInfoMessage(String message){
-        sendSenderInfoMessage(ShowingItem.getConsoleSender(), message);
+    private final HashMap<String, Component> texts;
+    public Text(){
+        texts = new HashMap<>();
+    }
+    public void put(String key, Component text){
+        texts.put(key, text);
     }
 
-    public static void sendSenderInfoMessage(CommandSender sender, String message){
-        sender.sendMessage(startOfMessage.append(MiniMessage.miniMessage().deserialize(message)));
-    }
-    public static void sendSenderInfoMessage(CommandSender sender, Component message){
-        sender.sendMessage(startOfMessage.append(message));
-    }
 
-    public static void sendListMessages(List<Component> messages){
+    public static void sendMessageListToConsole(List<Component> messages){
         for(Component message : messages)
-            sendSenderMessage(ShowingItem.getConsoleSender(), message);
-    }
-    private static void sendSenderMessage(CommandSender sender, Component message){
-        sender.sendMessage(message);
+            sendMessageToConsole(message, false);
     }
 
-
-    public static List<Component> convertStringListToComponentList(List<String> stringList){
-        List<Component> listComponent = new ArrayList<>();
-        for (String string : stringList)
-            listComponent.add(MiniMessage.miniMessage().deserialize(string));
-        return listComponent;
+    public static void sendMessageToConsole(String message){
+        sendMessageToConsole(message, true);
+    }
+    public static void sendMessageToConsole(String message, boolean hasMessageBegin){
+        Component targetMessage = MiniMessage.miniMessage().deserialize(message);
+        sender.sendMessage(hasMessageBegin ? MESSAGE_BEGIN.append(targetMessage) : targetMessage);
+    }
+    public static void sendMessageToConsole(Component message, boolean hasMessageBegin){
+        sender.sendMessage(hasMessageBegin ? MESSAGE_BEGIN.append(message) : message);
     }
 }

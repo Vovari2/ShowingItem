@@ -13,15 +13,15 @@ public class ReloadCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        if (!sender.hasPermission("showingitem.*"))
-            throw new ComponentException(Text.getComponent("warning.dont_have_permission"));
+        if (!sender.hasPermission("showingitem.reload"))
+            throw new ComponentException(Text.get("warning.dont_have_permission"));
 
         if (args.length > 2)
-            throw new ComponentException(Text.getComponent("warning.command_incorrectly"));
+            throw new ComponentException(Text.get("warning.command_incorrectly"));
 
         plugin.onDisable();
         plugin.onEnable();
 
-        Text.sendSenderInfoMessage(sender, Text.getComponent("command.reload"));
+        sender.sendMessage(Text.get("command.reload"));
     }
 }
