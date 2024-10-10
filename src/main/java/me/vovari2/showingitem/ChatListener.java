@@ -22,7 +22,7 @@ public class ChatListener implements Listener {
             return;
 
         ItemStack itemStack = player.getInventory().getItemInMainHand();
-        if(itemStack.isEmpty())
+        if(itemStack.getType().isAir())
             return;
 
         event.message(
@@ -37,6 +37,6 @@ public class ChatListener implements Listener {
     }
 
     private Component getComponentFromItemStack(ItemStack itemStack){
-        return ((Component) ((TranslatableComponent) itemStack.displayName()).arguments().getFirst().value()).hoverEvent(itemStack.asHoverEvent());
+        return (((TranslatableComponent) itemStack.displayName()).args().get(0)).hoverEvent(itemStack.asHoverEvent());
     }
 }
