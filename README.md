@@ -2,6 +2,10 @@
 
 ---
 
+![image](/images/guide-1.png)
+
+---
+
 ![image](/images/commands.png)
 
 ---
