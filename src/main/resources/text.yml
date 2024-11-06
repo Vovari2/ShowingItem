@@ -19,9 +19,14 @@ warning:
   command_incorrectly: "<red>Command is incorrectly! (/uc help)"
 
 vault:
+  # EN: Message notifying that Vault is connected normally (RU: Сообщение уведомляющее, что Vault подключён нормально)
   plugin_connected: "<green>Vault plugin is connected!"
+  # EN: Message notifying that Vault is not connected (RU: Сообщение уведомляющее, что Vault не подключён)
   plugin_not_connected: "<red>Vault plugin is not connected!"
 
+
+  # EN: Message, when using [item], withdraw coins (RU: Сообщение, при использовании [item], снятие монет)
   use_feature: "<green>For using this \"<%matcher%>\", <newline>your account has been removed <gold><%cost%>$</gold> (Balance: <gold><%balance%>$</gold>)"
 
+  # EN: Warning, if there are not enough coins to use [item] (RU: Предупреждение, при недостатке монет для использования [item])
   not_enough_coins_on_balance: "<red>You can't use this \"<%matcher%>\" <newline>You need <gold><%cost%>$</gold> (Balance: <gold><%balance%>$</gold>)"

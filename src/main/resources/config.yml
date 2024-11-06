@@ -17,10 +17,10 @@ replacement: "<#F08A5D><</#F08A5D><%item%><#F08A5D>></#F08A5D>"
 
 
 vault:
-  # EN: String that will be replaced with an item in the chat (will be replaced only if the player has the showingitem.use permission)
-  # RU: Строка, которая в чате будет заменяться на предмет (будет заменяться, только если игрок имеет разрешение showingitem.use)
+  # EN: Will there be a coin charge for using [item] (true/false)
+  # RU: Будет ли снимать монеты за использование [item] (true/false)
   use_vault: true
 
-  # EN: String that will be replaced with an item in the chat (will be replaced only if the player has the showingitem.use permission)
-  # RU: Строка, которая в чате будет заменяться на предмет (будет заменяться, только если игрок имеет разрешение showingitem.use)
+  # EN: Cost of use [item]
+  # RU: Стоимость использования [item]
   cost: 100
