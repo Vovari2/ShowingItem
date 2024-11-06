@@ -17,3 +17,11 @@ warning:
 
   # EN: Warning, command is incorrectly (RU: Предупреждение, команда написана неверно)
   command_incorrectly: "<red>Command is incorrectly! (/uc help)"
+
+vault:
+  plugin_connected: "<green>Vault plugin is connected!"
+  plugin_not_connected: "<red>Vault plugin is not connected!"
+
+  use_feature: "<green>For using this \"<%matcher%>\", <newline>your account has been removed <gold><%cost%>$</gold> (Balance: <gold><%balance%>$</gold>)"
+
+  not_enough_coins_on_balance: "<red>You can't use this \"<%matcher%>\" <newline>You need <gold><%cost%>$</gold> (Balance: <gold><%balance%>$</gold>)"

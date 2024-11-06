@@ -11,9 +11,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.HashMap;
 
 public class Text {
-    public static final String PLUGIN_NAME = "ShowingItem";
-    public static final String VERSION = "1.0.1";
-    private static final Component MESSAGE_BEGIN = MiniMessage.miniMessage().deserialize("<dark_aqua>[<aqua>ShowingItem<dark_aqua>]<reset> ");
+    public static final String PLUGIN_NAME = ShowingItem.getInstance().getName();
+    public static final String VERSION = ShowingItem.getInstance().getDescription().getVersion();
+    private static final Component MESSAGE_BEGIN = MiniMessage.miniMessage().deserialize("<gray>[ShowingItem]<reset> ");
 
     private static ConsoleCommandSender sender;
     protected static void initialize(ConsoleCommandSender newSender) throws ComponentException {
@@ -54,6 +54,17 @@ public class Text {
     public static Component replace(Component message, String matcher, Component replacement){
         TextReplacementConfig.Builder builder = TextReplacementConfig.builder();
         return message.replaceText(builder.matchLiteral(matcher).replacement(replacement).build());
+    }
+    public static Component replace(String key, String... values){
+        if (values.length % 2 == 1)
+            return Component.text(key);
+
+        Component message = get(key);
+        TextReplacementConfig.Builder builder = TextReplacementConfig.builder();
+        for (int i = 0; i < values.length; i += 2)
+            message = message.replaceText(builder.match(values[i]).replacement(values[i+1]).build());
+
+        return message;
     }
     protected static void clear(){
         texts.clear();

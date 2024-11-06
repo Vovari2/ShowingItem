@@ -17,7 +17,7 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
 
     private List<String> getPermissionedCommands(CommandSender sender){
         List<String> commands = Executor.getCommandList();
-        commands.removeIf(command -> !sender.hasPermission("usual_counters." + command) && !command.equals("ignore"));
+        commands.removeIf(command -> !sender.hasPermission("showing_item." + command));
         return commands;
     }
 }

@@ -12,10 +12,12 @@ public class Config {
     public static String MATCHER;
     public static Component REPLACEMENT;
 
+    public static boolean VAULT_USED;
+    public static int VAULT_COST;
+
     public static void initialize() throws ComponentException {
         new Config().initializeInside();
     }
-
     private FileConfiguration fileConfig;
     private void initializeInside() throws ComponentException {
         FileUtils.createPluginFileInDataFolder("config.yml");
@@ -25,6 +27,9 @@ public class Config {
 
         MATCHER = getString("matcher");
         REPLACEMENT = getComponent("replacement");
+
+        VAULT_USED = getBoolean("vault.use_vault");
+        VAULT_COST = getPositiveInt("vault.cost");
     }
 
     private boolean getBoolean(String path) throws ComponentException{

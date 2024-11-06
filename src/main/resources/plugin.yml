@@ -1,12 +1,15 @@
 name: ShowingItem
 author: Vovari2
-version: '1.0.1'
+version: '${project.version}'
 main: me.vovari2.showingitem.ShowingItem
 api-version: '1.18'
 
 commands:
   showingitem:
     aliases: ["si"]
+
+softdepend:
+  - Vault
 
 permissions:
   showing_item.*:
