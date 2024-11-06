@@ -14,7 +14,7 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        if (!sender.hasPermission("showingitem.help") && !sender.hasPermission("showingitem.*"))
+        if (!sender.hasPermission("showing_item.help"))
             throw new ComponentException(Text.get("warning.dont_have_permission"));
 
         if (args.length > 1)

@@ -1,0 +1,19 @@
+command:
+  # EN: Message shown by /uc help (RU: Сообщение показываемое по команде /uc help)
+  help: "
+  <gradient:#4C3BCF:#4B70F5:#4C3BCF><strikethrough>      </strikethrough> ShowingItem Helper <strikethrough>      </strikethrough></gradient><newline><newline>
+  <gradient:#7695FF:#9DBDFF>- <hover:show_text:\"<gray>View information about commands\">/si help</hover></gradient><newline>
+  <gradient:#7695FF:#9DBDFF>- <hover:show_text:\"<gray>Reload plugin\">/si reload</hover></gradient><newline><newline>"
+
+  # EN: Message shown after the plugin is reloaded (RU: Сообщение показываемое после перезагрузки плагина)
+  reload: "<gradient:#54B435:#82CD47>Plugin reloaded!</gradient>"
+
+warning:
+  # EN: Message shown after the plugin is reloaded (RU: Предупреждение, это может делать только игрок)
+  you_not_player: "<red>You are not a player!"
+
+  # EN: Warning, don't have permissions (RU: Предупреждение, недостаточно прав)
+  dont_have_permission: "<red>You don't have permissions!"
+
+  # EN: Warning, command is incorrectly (RU: Предупреждение, команда написана неверно)
+  command_incorrectly: "<red>Command is incorrectly! (/uc help)"

@@ -10,9 +10,15 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Executor implements CommandExecutor {
-    private final HashMap<String, Class<? extends Command>> commands;
+    private static HashMap<String, Class<? extends Command>> commands;
+    public static List<String> getCommandList(){
+        return new LinkedList<>(commands.keySet());
+    }
+
     public Executor(){
         commands = new HashMap<>();
         commands.put("help", HelpCommand.class);

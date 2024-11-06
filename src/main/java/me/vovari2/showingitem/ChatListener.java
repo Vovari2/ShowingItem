@@ -1,9 +1,7 @@
 package me.vovari2.showingitem;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextReplacementConfig;
-import net.kyori.adventure.text.TranslatableComponent;
+import me.vovari2.showingitem.utils.TextUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,31 +10,23 @@ import org.bukkit.inventory.ItemStack;
 
 public class ChatListener implements Listener {
 
-    @EventHandler(priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onAsyncChat(AsyncChatEvent event){
         if (!ShowingItem.isEnable())
             return;
 
         Player player = event.getPlayer();
-        if (!player.hasPermission("showingitem.use") && !player.hasPermission("showingitem.*"))
+        if (!player.hasPermission("showing_item.use"))
             return;
 
         ItemStack itemStack = player.getInventory().getItemInMainHand();
         if(itemStack.getType().isAir())
             return;
 
-        event.message(
-                replace(event.originalMessage(),
-                        ShowingItem.getMatcher(),
-                        replace(ShowingItem.getReplacement(),
+        event.message(Text.replace(event.originalMessage(),
+                        Config.MATCHER,
+                        Text.replace(Config.REPLACEMENT,
                                 "<%item%>",
-                                getComponentFromItemStack(itemStack))));
-    }
-    private Component replace(Component message, String matcher, Component replacement){
-        return message.replaceText(TextReplacementConfig.builder().matchLiteral(matcher).replacement(replacement).build());
-    }
-
-    private Component getComponentFromItemStack(ItemStack itemStack){
-        return (((TranslatableComponent) itemStack.displayName()).args().get(0)).hoverEvent(itemStack.asHoverEvent());
+                                TextUtils.toComponent(itemStack))));
     }
 }

@@ -8,3 +8,17 @@ commands:
   showingitem:
     aliases: ["si"]
 
+permissions:
+  showing_item.*:
+    description: "Permission to perform all actions of the ShowingItem plugin"
+    default: false
+
+  showing_item.help:
+    description: "Permission to use the help command (/si help)"
+    default: false
+  showing_item.reload:
+    description: "Permission to use the reload command (/si reload)"
+    default: false
+  showing_item.use:
+    description: "Permission to use a replaceable string"
+    default: false
